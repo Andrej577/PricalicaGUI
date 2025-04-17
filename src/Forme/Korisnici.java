@@ -97,7 +97,7 @@ public class Korisnici extends JDialog {
 	public void GetKorisnici() {
 		try {
 			Connection conn = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/Pricalica", "andrej", "11");
+					"jdbc:mysql://ucka.veleri.hr:3306/jbanusic", "jbanusic", "11");
 
 			String query = "SELECT * FROM korisnici";
 			PreparedStatement stmt = conn.prepareStatement(query);

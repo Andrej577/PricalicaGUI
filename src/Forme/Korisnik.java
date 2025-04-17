@@ -132,7 +132,7 @@ public class Korisnik extends JDialog {
 						try {
 							Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 								Connection conn = DriverManager.
-								getConnection("jdbc:mysql://localhost/Pricalica?" + "user=andrej&password=11");
+								getConnection("jdbc:mysql://ucka.veleri.hr:3306/jbanusic", "jbanusic", "11");
 								PreparedStatement stmt = conn.
 									prepareStatement("INSERT INTO korisnici (ime,prezime,email,"
 									+ "lozinka_hash,tip_id,status_id,ima_pretplatu) VALUES(?,?,?,?,?,?,?)");
