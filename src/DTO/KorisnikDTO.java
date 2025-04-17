@@ -1,6 +1,6 @@
 package DTO;
 
-public class Korisnik 
+public class KorisnikDTO 
 {
 	public String Ime;
 	public String Prezime;

@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -114,7 +115,7 @@ public class Korisnik extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						DTO.Korisnik kor = new DTO.Korisnik();
+						DTO.KorisnikDTO kor = new DTO.KorisnikDTO();
 						kor.Ime = textField_2.getText();
 						kor.Prezime = textField_3.getText();
 						//kor.KorisnickoIme = textField.getText();
@@ -148,6 +149,7 @@ public class Korisnik extends JDialog {
 								dispose();
 						} catch (Exception ex) 
 						{
+							JOptionPane.showMessageDialog(null, ex.toString());
 							System.out.println(ex.toString());
 						}
 
@@ -159,6 +161,11 @@ public class Korisnik extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
