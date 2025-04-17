@@ -86,7 +86,7 @@ public class LoginForm {
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Korisnik dialog = new Korisnik();
+				KorisnikForm dialog = new KorisnikForm();
 				dialog.setVisible(true);
 				dialog.dispose();
 				//Login();
