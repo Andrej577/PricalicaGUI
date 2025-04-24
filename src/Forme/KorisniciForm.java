@@ -16,6 +16,10 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import DTO.KorisnikDTO;
+
+import javax.swing.JLabel;
+
 public class KorisniciForm extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -50,7 +54,10 @@ public class KorisniciForm extends JDialog {
 		JButton btnNewButton = new JButton("Dodaj korisnika");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				KorisnikForm korDialog = new KorisnikForm();
+				
+				KorisnikDTO kor = null;
+				
+				KorisnikForm korDialog = new KorisnikForm(kor);
 				korDialog.setModal(true);
 				korDialog.setVisible(true);
 
@@ -72,6 +79,10 @@ public class KorisniciForm extends JDialog {
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(20, 61, 814, 388);
 		contentPanel.add(scrollPane);
+		
+		JLabel lblNewLabel = new JLabel("Korisnici");
+		lblNewLabel.setBounds(20, 15, 132, 14);
+		contentPanel.add(lblNewLabel);
 
 		// Donji panel sa OK/Cancel
 		JPanel buttonPane = new JPanel();

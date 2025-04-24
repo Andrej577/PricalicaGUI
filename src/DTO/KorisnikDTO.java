@@ -2,6 +2,7 @@ package DTO;
 
 public class KorisnikDTO 
 {
+	public int korisnikId;
 	public String Ime;
 	public String Prezime;
 	public String EMail;

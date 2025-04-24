@@ -1,0 +1,7 @@
+mysql-connector-j-9.3.0/
+.classpath
+.project
+*.prefs
+bin/
+.settings/
+.gitignore/

@@ -26,7 +26,7 @@ public class KnjigaForm extends JDialog {
     }
 
     // Privatni konstruktor za testiranje (ako je potrebno)
-    private KnjigaForm() {
+    KnjigaForm() {
         initialize();
     }
 

@@ -2,6 +2,7 @@ package Forme;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -50,6 +51,7 @@ public class LoginForm {
 		char[] passwordChars = passwordField.getPassword();
 		String password = new String(passwordChars);
 		//String test1= User + " " + password;
+		
 	}
 
 	
@@ -85,7 +87,7 @@ public class LoginForm {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-		        MainFormAdministrator main = new MainFormAdministrator();
+		        MainForm main = new MainForm();
 		        main.show();
 			}
 		});
