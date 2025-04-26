@@ -11,13 +11,11 @@ import javax.swing.JPanel;
 
 import DTO.KorisnikDTO;
 
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
 import java.awt.Font;
 
 public class MainFormAdministrator {
 
-	private JFrame frame;
+	private JFrame frmAdministrator;
 
 	/**
 	 * Launch the application.
@@ -27,7 +25,7 @@ public class MainFormAdministrator {
 			public void run() {
 				try {
 					MainFormAdministrator window = new MainFormAdministrator();
-					window.frame.setVisible(true);
+					window.frmAdministrator.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -46,23 +44,24 @@ public class MainFormAdministrator {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 595, 414);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmAdministrator = new JFrame();
+		frmAdministrator.setTitle("Glavni izbornik - Administrator");
+		frmAdministrator.setBounds(100, 100, 595, 414);
+		frmAdministrator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmAdministrator.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Glavni izbornik");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel.setBounds(20, 11, 115, 22);
-		frame.getContentPane().add(lblNewLabel);
+		frmAdministrator.getContentPane().add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(20, 54, 253, 236);
-		frame.getContentPane().add(panel);
+		frmAdministrator.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JButton btnKorisnici = new JButton("Unos novog korisnika");
-		btnKorisnici.setBounds(10, 58, 147, 38);
+		btnKorisnici.setBounds(10, 58, 198, 38);
 		panel.add(btnKorisnici);
 		
 		JLabel lblNewLabel_1 = new JLabel("Korisnici");
@@ -77,7 +76,7 @@ public class MainFormAdministrator {
 				korisniciForma.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(10, 123, 147, 38);
+		btnNewButton.setBounds(10, 123, 198, 38);
 		panel.add(btnNewButton);
 		btnKorisnici.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -89,11 +88,11 @@ public class MainFormAdministrator {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(302, 54, 238, 236);
-		frame.getContentPane().add(panel_1);
+		frmAdministrator.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
 		JButton btnKnjige = new JButton("Unos nove knjige");
-		btnKnjige.setBounds(10, 58, 162, 36);
+		btnKnjige.setBounds(10, 58, 218, 36);
 		panel_1.add(btnKnjige);
 		
 		JLabel lblNewLabel_2 = new JLabel("Knjige");
@@ -108,7 +107,7 @@ public class MainFormAdministrator {
 				knjigeForma.setVisible(true);
 			}
 		});
-		btnNewButton_1.setBounds(10, 123, 162, 36);
+		btnNewButton_1.setBounds(10, 123, 218, 36);
 		panel_1.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Izlaz");
@@ -118,7 +117,7 @@ public class MainFormAdministrator {
 			}
 		});
 		btnNewButton_2.setBounds(454, 345, 115, 30);
-		frame.getContentPane().add(btnNewButton_2);
+		frmAdministrator.getContentPane().add(btnNewButton_2);
 		btnKnjige.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				KnjigaForm knjigaForma = new KnjigaForm();
@@ -129,6 +128,6 @@ public class MainFormAdministrator {
 	
 	public void show() 
 	{
-	    frame.setVisible(true);
+	    frmAdministrator.setVisible(true);
 	}
 }

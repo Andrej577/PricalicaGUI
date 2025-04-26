@@ -1,7 +1,6 @@
 package Forme;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -14,6 +13,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class MainFormKorisnik extends JDialog {
 
@@ -23,9 +23,9 @@ public class MainFormKorisnik extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args, KorisnikDTO kor) {
 		try {
-			MainFormKorisnik dialog = new MainFormKorisnik();
+			MainFormKorisnik dialog = new MainFormKorisnik(kor);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -36,7 +36,8 @@ public class MainFormKorisnik extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public MainFormKorisnik() {
+	public MainFormKorisnik(KorisnikDTO kor) {
+		setTitle("Glavni izbornik - korisnik");
 		setBounds(100, 100, 550, 494);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -44,7 +45,7 @@ public class MainFormKorisnik extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			JLabel lblNewLabel = new JLabel("Glavni izbornik");
-			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 			lblNewLabel.setBounds(20, 11, 138, 30);
 			contentPanel.add(lblNewLabel);
 		}
@@ -60,8 +61,9 @@ public class MainFormKorisnik extends JDialog {
 			contentPanel.add(btnNewButton);
 		}
 		{
-			JLabel lblNewLabel_1 = new JLabel("Ime Prezime");
-			lblNewLabel_1.setBounds(439, 21, 85, 14);
+			JLabel lblNewLabel_1 = new JLabel(kor.Ime + " " + kor.Prezime);
+			lblNewLabel_1.setHorizontalAlignment(SwingConstants.TRAILING);
+			lblNewLabel_1.setBounds(312, 21, 212, 14);
 			contentPanel.add(lblNewLabel_1);
 		}
 		{

@@ -39,7 +39,5 @@ public class Korisnik {
 			ex.printStackTrace();
 			return null;
 		}
-		
-
 	}
 }

@@ -11,6 +11,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import DTO.KorisnikDTO;
 import java.sql.*;
+import java.awt.Font;
 
 public class KorisnikForm extends JDialog {
 
@@ -22,6 +23,7 @@ public class KorisnikForm extends JDialog {
 	private JTextField textField_3;
 
 	public KorisnikForm(KorisnikDTO kor) {
+		setTitle("Unos novog korisnika");
 		setBounds(100, 100, 348, 444);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -84,7 +86,8 @@ public class KorisnikForm extends JDialog {
 		textField_3.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel("Korisnik");
-		lblNewLabel.setBounds(10, 10, 110, 14);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setBounds(10, 10, 313, 20);
 		contentPanel.add(lblNewLabel);
 
 		JPanel buttonPane = new JPanel();

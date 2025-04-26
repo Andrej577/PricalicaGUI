@@ -5,3 +5,5 @@ mysql-connector-j-9.3.0/
 bin/
 .settings/
 .gitignore/
+
+/.idea

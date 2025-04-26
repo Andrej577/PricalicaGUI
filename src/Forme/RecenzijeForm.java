@@ -1,9 +1,7 @@
 package Forme;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -45,6 +43,7 @@ public class RecenzijeForm extends JDialog {
 	 * Create the dialog.
 	 */
 	public RecenzijeForm() {
+		setTitle("Moje recenzije");
 		setBounds(100, 100, 820, 455);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -52,7 +51,7 @@ public class RecenzijeForm extends JDialog {
 		contentPanel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Moje recenzije");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel.setBounds(10, 11, 110, 27);
 		contentPanel.add(lblNewLabel);
 		

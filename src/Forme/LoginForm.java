@@ -4,22 +4,23 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
-
-
+import DTO.KorisnikDTO;
 
 public class LoginForm {
 
-	private JFrame frame;
+	private JFrame frmPrijava;
 	private JPasswordField passwordField;
 	private JTextField textField;
-	private JLabel lblNewLabel_1;
 
 	/**
 	 * Launch the application.
@@ -29,7 +30,7 @@ public class LoginForm {
 			public void run() {
 				try {
 					LoginForm window = new LoginForm();
-					window.frame.setVisible(true);
+					window.frmPrijava.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -45,11 +46,37 @@ public class LoginForm {
 	}
 	public void Login()
 	{
-		String username = textField.getText();
-		
+		// ADMIN PRIMJER 
+		// maja.peric@example.com
+		// Maja*Secure5
+
+		// KORISNIK PRIMJER 
+		// sara.juric@example.com
+		// SaraLove44
+		DAL.Login loginDAL = new DAL.Login();
+
+		String email = textField.getText();
 		char[] passwordChars = passwordField.getPassword();
 		String password = new String(passwordChars);
-		//String test1= User + " " + password;
+
+		KorisnikDTO kor = loginDAL.CheckUser(email, password);
+		if (kor == null)
+		{
+			JOptionPane.showMessageDialog(null, "Neispravan email ili lozinka.");
+			return;
+		}
+		if (kor.Tip_id == 1)
+		{
+			frmPrijava.dispose();
+			MainFormAdministrator main = new MainFormAdministrator();
+			main.show();
+		}
+		else 
+		{
+			frmPrijava.dispose();
+			MainFormKorisnik main = new MainFormKorisnik(kor);
+			main.setVisible(true);
+		}
 	}
 
 	
@@ -57,43 +84,45 @@ public class LoginForm {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 606, 476);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmPrijava = new JFrame();
+		frmPrijava.setTitle("Prijava");
+		frmPrijava.setBounds(100, 100, 606, 403);
+		frmPrijava.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPrijava.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("USERNAME");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		lblNewLabel.setBounds(28, 83, 124, 54);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel lblNewLabel = new JLabel("Korisničko ime");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(100, 127, 124, 44);
+		frmPrijava.getContentPane().add(lblNewLabel);
 		
-		JLabel lblLozinka = new JLabel("LOZINKA");
-		lblLozinka.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		lblLozinka.setBounds(28, 170, 124, 54);
-		frame.getContentPane().add(lblLozinka);
+		JLabel lblLozinka = new JLabel("Lozinka");
+		lblLozinka.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblLozinka.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblLozinka.setBounds(100, 174, 124, 39);
+		frmPrijava.getContentPane().add(lblLozinka);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(174, 180, 163, 39);
-		frame.getContentPane().add(passwordField);
+		passwordField.setBounds(234, 183, 163, 23);
+		frmPrijava.getContentPane().add(passwordField);
 		
 		textField = new JTextField();
-		textField.setBounds(174, 83, 163, 39);
-		frame.getContentPane().add(textField);
+		textField.setBounds(234, 139, 163, 23);
+		frmPrijava.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Login");
+		JButton btnNewButton = new JButton("Prijava");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-		        MainFormAdministrator main = new MainFormAdministrator();
-		        main.show();
+				Login();
 			}
 		});
-		btnNewButton.setBounds(248, 364, 89, 23);
-		frame.getContentPane().add(btnNewButton);
+		btnNewButton.setBounds(250, 286, 105, 30);
+		frmPrijava.getContentPane().add(btnNewButton);
 		
-		lblNewLabel_1 = new JLabel("Test");
-		lblNewLabel_1.setBounds(394, 277, 132, 48);
-		frame.getContentPane().add(lblNewLabel_1);
+		JLabel lblNewLabel_1 = new JLabel("Prijava u aplikaciju");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_1.setBounds(34, 33, 163, 44);
+		frmPrijava.getContentPane().add(lblNewLabel_1);
 	}
 }

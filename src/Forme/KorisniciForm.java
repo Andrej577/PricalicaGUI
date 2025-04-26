@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 import DTO.KorisnikDTO;
 
 import javax.swing.JLabel;
+import java.awt.Font;
 
 public class KorisniciForm extends JDialog {
 
@@ -37,6 +38,7 @@ public class KorisniciForm extends JDialog {
 	}
 
 	public KorisniciForm() {
+		setTitle("Popis korisnika");
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
@@ -81,7 +83,8 @@ public class KorisniciForm extends JDialog {
 		contentPanel.add(scrollPane);
 		
 		JLabel lblNewLabel = new JLabel("Korisnici");
-		lblNewLabel.setBounds(20, 15, 132, 14);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setBounds(20, 15, 132, 19);
 		contentPanel.add(lblNewLabel);
 
 		// Donji panel sa OK/Cancel

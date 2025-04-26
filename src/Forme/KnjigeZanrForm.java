@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import java.awt.Font;
 
 public class KnjigeZanrForm extends JFrame {
 
@@ -35,6 +36,7 @@ public class KnjigeZanrForm extends JFrame {
     }
 
     public KnjigeZanrForm() {
+    	setTitle("Žanrovi");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 540, 527);
         contentPane = new JPanel();
@@ -43,15 +45,17 @@ public class KnjigeZanrForm extends JFrame {
         contentPane.setLayout(null);
 
         JLabel lblNewLabel = new JLabel("Žanrovi");
-        lblNewLabel.setBounds(207, 11, 69, 26);
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+        lblNewLabel.setBounds(25, 11, 478, 26);
         contentPane.add(lblNewLabel);
 
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(74, 98, 336, 338);
+        scrollPane.setBounds(45, 98, 429, 338);
         contentPane.add(scrollPane);
 
         list = new JList<>();
-        scrollPane.setViewportView(list);
+        list.setBounds(45, 99, 429, 336);
+        contentPane.add(list);
 
         ucitajZanrove();
     }
