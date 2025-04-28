@@ -53,7 +53,7 @@ public class MainFormKorisnik extends JDialog {
 			JButton btnNewButton = new JButton("Pregled knjiga");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					KnjigeForm knjigeForma = new KnjigeForm();
+					Knjigetemp knjigeForma = new Knjigetemp();
 					knjigeForma.setVisible(true);
 				}
 			});

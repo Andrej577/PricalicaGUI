@@ -34,9 +34,10 @@ public class Login {
 				kor.Tip_id = rs.getInt("tip_id");
 				kor.Status = rs.getInt("status_id");
 				kor.Pretplata = rs.getBoolean("ima_pretplatu");
+				return kor;
 			}
 			
-			return kor;
+			return null;
 		}
 		catch(Exception ex) 
 		{

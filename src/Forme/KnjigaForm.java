@@ -19,8 +19,8 @@ public class KnjigaForm extends JDialog {
     private JTextField tfPoveznica;
 
     // Glavni konstruktor koji prima roditeljski JFrame
-    public KnjigaForm(JFrame parent) {
-        super(parent, "Unos nove knjige", true);
+    public KnjigaForm(Knjigetemp knjigetemp) {
+        super(knjigetemp, "Unos nove knjige", true);
         initialize();
     }
 

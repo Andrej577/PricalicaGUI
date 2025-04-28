@@ -94,59 +94,6 @@ public class KorisnikForm extends JDialog {
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
-		JButton okButton = new JButton("OK");
-		okButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-					Connection conn = DriverManager.getConnection(
-							"jdbc:mysql://ucka.veleri.hr:3306/jbanusic", "jbanusic", "11");
-
-					String ime = textField_2.getText();
-					String prezime = textField_3.getText();
-					String email = textField_1.getText();
-					String lozinka = new String(passwordField.getPassword());
-					int tipId = choice.getSelectedIndex() + 1;
-					int status = chckbxNewCheckBox.isSelected() ? 1 : 0;
-					boolean pretplata = chckbxNewCheckBox_1.isSelected();
-
-					if (kor != null && kor.korisnikId != 0) {
-						PreparedStatement stmt = conn.prepareStatement(
-								"UPDATE korisnici SET ime=?, prezime=?, email=?, lozinka_hash=?, tip_id=?, status_id=?, ima_pretplatu=? WHERE korisnik_id=?");
-						stmt.setString(1, ime);
-						stmt.setString(2, prezime);
-						stmt.setString(3, email);
-						stmt.setString(4, lozinka);
-						stmt.setInt(5, tipId);
-						stmt.setInt(6, status);
-						stmt.setBoolean(7, pretplata);
-						stmt.setInt(8, kor.korisnikId);
-						stmt.executeUpdate();
-					} else {
-						PreparedStatement stmt = conn.prepareStatement(
-								"INSERT INTO korisnici (ime,prezime,email,lozinka_hash,tip_id,status_id,ima_pretplatu) VALUES(?,?,?,?,?,?,?)");
-						stmt.setString(1, ime);
-						stmt.setString(2, prezime);
-						stmt.setString(3, email);
-						stmt.setString(4, lozinka);
-						stmt.setInt(5, tipId);
-						stmt.setInt(6, status);
-						stmt.setBoolean(7, pretplata);
-						stmt.executeUpdate();
-					}
-
-					conn.close();
-					dispose();
-				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null, ex.toString());
-					ex.printStackTrace();
-				}
-			}
-		});
-		okButton.setActionCommand("OK");
-		buttonPane.add(okButton);
-		getRootPane().setDefaultButton(okButton);
-
 		JButton cancelButton = new JButton("Cancel");
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

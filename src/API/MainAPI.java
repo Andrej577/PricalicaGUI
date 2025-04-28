@@ -1,5 +1,6 @@
 package API;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,24 +13,26 @@ public class MainAPI {
 	public String StreamAPIEnpoint = "http://localhost:5000";
 	public String DatabaseAPIEndpoint = "http://localhsost:3000";
 
-	public void GetMP3Stream()
+	public File GetWavStream()
 	{
 		HttpClient client = HttpClient.newHttpClient();
 		HttpRequest request = HttpRequest.newBuilder()
-		.uri(URI.create(StreamAPIEnpoint + "/stream?file=sample.mp3"))
+		.uri(URI.create(StreamAPIEnpoint + "/stream?file=Quran.wav"))
 		.build();
 		try {
             HttpResponse<InputStream> response = client.send(request, HttpResponse.BodyHandlers.ofInputStream());
-
+        	
             if (response.statusCode() == 200) 
 			{
                 try (InputStream inputStream = response.body();
-                     FileOutputStream outputStream = new FileOutputStream("output.mp3")) 
+                     FileOutputStream outputStream = new FileOutputStream("output.wav")) 
 				{
                     inputStream.transferTo(outputStream);
+                    System.out.println("WAV datoteka je uspješno preuzeta.");
+                    return new File("output.wav");
                 }
-                System.out.println("MP3 datoteka je uspješno preuzet.");
-            } else 
+            } 
+            else 
 			{
                 System.out.println("Neuspješan zahtjev. Status kod: " + response.statusCode());
             }
@@ -38,5 +41,6 @@ public class MainAPI {
 		{
             e.printStackTrace();
         }
+		return null;
 	}
 }

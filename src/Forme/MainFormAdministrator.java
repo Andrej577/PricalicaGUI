@@ -103,7 +103,7 @@ public class MainFormAdministrator {
 		JButton btnNewButton_1 = new JButton("Pregled knjiga");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				KnjigeForm knjigeForma = new KnjigeForm();
+				Knjigetemp knjigeForma = new Knjigetemp();
 				knjigeForma.setVisible(true);
 			}
 		});

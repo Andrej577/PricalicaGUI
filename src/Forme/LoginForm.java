@@ -60,7 +60,7 @@ public class LoginForm {
 		String password = new String(passwordChars);
 
 		KorisnikDTO kor = loginDAL.CheckUser(email, password);
-		if (kor == null)
+		if (kor == null || email=="" || password=="")
 		{
 			JOptionPane.showMessageDialog(null, "Neispravan email ili lozinka.");
 			return;
