@@ -5,8 +5,7 @@ import java.awt.Choice;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import DTO.KorisnikDTO;
@@ -21,8 +20,19 @@ public class KorisnikForm extends JDialog {
 	private JPasswordField passwordField;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private KorisnikDTO kor;
 
-	public KorisnikForm(KorisnikDTO kor) {
+	public KorisnikForm(KorisnikDTO korNovi) {
+		if (korNovi == null)
+		{
+			kor = new KorisnikDTO();
+		}
+		else
+		{
+			kor = korNovi;
+		}
+			
+		
 		setTitle("Unos novog korisnika");
 		setBounds(100, 100, 348, 444);
 		getContentPane().setLayout(new BorderLayout());
@@ -100,11 +110,40 @@ public class KorisnikForm extends JDialog {
 				dispose();
 			}
 		});
+		
+		JButton btnNewButton = new JButton("Unesi");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			    kor.Ime     = textField_2.getText();
+			    kor.Prezime = textField_3.getText();
+			    kor.EMail   = textField_1.getText();
+			    kor.Lozinka = new String(passwordField.getPassword()); 
+
+			    kor.Tip_id  = choice.getSelectedIndex() + 1;
+
+			    kor.Status    = chckbxNewCheckBox.isSelected()   ? 1 : 0;
+			    kor.Pretplata = chckbxNewCheckBox_1.isSelected();
+			    
+			    
+				DAL.Korisnik korDAL = new DAL.Korisnik();
+				try {
+					korDAL.insertOrUpdateKorisnik(kor);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(null, "Pogreška prilikom unosta" + e1.getMessage());
+					e1.printStackTrace();
+				}
+				
+				dispose();
+			}
+		});
+		buttonPane.add(btnNewButton);
 		cancelButton.setActionCommand("Cancel");
 		buttonPane.add(cancelButton);
 
 		// Popunjavanje forme ako se radi o UPDATE-u
-		if (kor != null) {
+		if (korNovi != null) {
 			textField_2.setText(kor.Ime);
 			textField_3.setText(kor.Prezime);
 			textField_1.setText(kor.EMail);
@@ -112,6 +151,8 @@ public class KorisnikForm extends JDialog {
 			choice.select(kor.Tip_id - 1);
 			chckbxNewCheckBox.setSelected(kor.Status == 1);
 			chckbxNewCheckBox_1.setSelected(kor.Pretplata);
+			choice.setEnabled(false);
+			chckbxNewCheckBox.setEnabled(false);
 		}
 	}
 }

@@ -63,14 +63,14 @@ public class KorisniciForm extends JDialog {
 				korDialog.setModal(true);
 				korDialog.setVisible(true);
 
-				// Nakon zatvaranja "Korisnik" dijaloga, osveži tabelu
+				// Nakon zatvaranja "Korisnik" dijaloga, osveži 
 				GetKorisnici();
 			}
 		});
 		btnNewButton.setBounds(702, 11, 132, 23);
 		contentPanel.add(btnNewButton);
 
-		// Tabela unutar ScrollPane-a
+		// Tablica unutar ScrollPane-a
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
