@@ -1,4 +1,4 @@
-package DAL;
+package Main;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,9 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import DTO.KorisnikDTO;
 
-public class Korisnik {
+public class KorisnikDAL {
 	public KorisnikDTO GetKorisnik()
 	{
 		try

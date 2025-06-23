@@ -1,4 +1,4 @@
-package Forme;
+package Main;
 
 import java.awt.BorderLayout;
 
@@ -7,7 +7,6 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import DTO.KorisnikDTO;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -86,7 +85,7 @@ public class MainFormKorisnik extends JDialog {
 			JButton btnNewButton_3 = new JButton("Moj profil");
 			btnNewButton_3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					DAL.Korisnik korisnikDAL = new DAL.Korisnik();
+					KorisnikDAL korisnikDAL = new KorisnikDAL();
 					KorisnikDTO kor = korisnikDAL.GetKorisnik();
 					
 					KorisnikForm korisnikForma = new KorisnikForm(kor);

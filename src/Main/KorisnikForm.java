@@ -1,4 +1,4 @@
-package Forme;
+package Main;
 
 import java.awt.BorderLayout;
 import java.awt.Choice;
@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import DTO.KorisnikDTO;
 import java.sql.*;
 import java.awt.Font;
 
@@ -126,7 +125,7 @@ public class KorisnikForm extends JDialog {
 			    kor.Pretplata = chckbxNewCheckBox_1.isSelected();
 			    
 			    
-				DAL.Korisnik korDAL = new DAL.Korisnik();
+				KorisnikDAL korDAL = new KorisnikDAL();
 				try {
 					korDAL.insertOrUpdateKorisnik(kor);
 				} catch (SQLException e1) {

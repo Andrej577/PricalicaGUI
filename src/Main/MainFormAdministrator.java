@@ -1,4 +1,4 @@
-package Forme;
+package Main;
 
 import java.awt.EventQueue;
 
@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import DTO.KorisnikDTO;
 
 import java.awt.Font;
 
