@@ -14,7 +14,7 @@ public class LoginDAL {
 			Connection conn = DriverManager.getConnection("jdbc:mysql://ucka.veleri.hr:3306/jbanusic", "jbanusic",
 					"11");
 
-			String query = "SELECT ime, prezime, email, lozinka_hash, tip_id, status_id, ima_pretplatu "
+			String query = "SELECT * "
 					+ "FROM korisnici WHERE email = ? AND lozinka_hash = ?";
 
 			PreparedStatement stmt = conn.prepareStatement(query);
@@ -23,6 +23,7 @@ public class LoginDAL {
 			ResultSet rs = stmt.executeQuery();
 
 			if (rs.next()) { // ako postoji rezultat
+				kor.korisnikId = rs.getInt("korisnik_id");
 				kor.Ime = rs.getString("ime");
 				kor.Prezime = rs.getString("prezime");
 				kor.EMail = rs.getString("email");

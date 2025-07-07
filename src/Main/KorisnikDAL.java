@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 
 public class KorisnikDAL {
-	public KorisnikDTO GetKorisnik()
+	public KorisnikDTO GetKorisnik(int korisnikId)
 	{
 		try
 		{
@@ -18,7 +18,7 @@ public class KorisnikDAL {
 
 			String query = "SELECT * FROM korisnici WHERE korisnik_id = ?";
 			PreparedStatement stmt = conn.prepareStatement(query);
-			stmt.setInt(1, 13);
+			stmt.setInt(1, korisnikId);
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) { // ako postoji rezultat
 				kor.korisnikId = rs.getInt("korisnik_id");

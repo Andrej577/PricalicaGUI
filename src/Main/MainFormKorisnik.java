@@ -78,6 +78,12 @@ public class MainFormKorisnik extends JDialog {
 		}
 		{
 			JButton btnNewButton_2 = new JButton("Pregled transakcija");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					TransakcijeForm form = new TransakcijeForm(kor.korisnikId);
+					form.setVisible(true);
+				}
+			});
 			btnNewButton_2.setBounds(20, 190, 169, 30);
 			contentPanel.add(btnNewButton_2);
 		}
@@ -85,9 +91,6 @@ public class MainFormKorisnik extends JDialog {
 			JButton btnNewButton_3 = new JButton("Moj profil");
 			btnNewButton_3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					KorisnikDAL korisnikDAL = new KorisnikDAL();
-					KorisnikDTO kor = korisnikDAL.GetKorisnik();
-					
 					KorisnikForm korisnikForma = new KorisnikForm(kor);
 					korisnikForma.setVisible(true);
 				}
