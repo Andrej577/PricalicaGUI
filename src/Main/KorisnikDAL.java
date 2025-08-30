@@ -1,4 +1,4 @@
-package DAL;
+package Main;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,10 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import DTO.KorisnikDTO;
 
-public class Korisnik {
-	public KorisnikDTO GetKorisnik()
+public class KorisnikDAL {
+	public KorisnikDTO GetKorisnik(int korisnikId)
 	{
 		try
 		{
@@ -19,7 +18,7 @@ public class Korisnik {
 
 			String query = "SELECT * FROM korisnici WHERE korisnik_id = ?";
 			PreparedStatement stmt = conn.prepareStatement(query);
-			stmt.setInt(1, 13);
+			stmt.setInt(1, korisnikId);
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) { // ako postoji rezultat
 				kor.korisnikId = rs.getInt("korisnik_id");

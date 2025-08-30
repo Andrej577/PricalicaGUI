@@ -1,4 +1,4 @@
-package Forme;
+package Main;
 
 import java.awt.EventQueue;
 
@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
-import DTO.KorisnikDTO;
 
 public class LoginForm {
 
@@ -53,14 +52,14 @@ public class LoginForm {
 		// KORISNIK PRIMJER 
 		// sara.juric@example.com
 		// SaraLove44
-		DAL.Login loginDAL = new DAL.Login();
+		LoginDAL loginDAL = new LoginDAL();
 
 		String email = textField.getText();
 		char[] passwordChars = passwordField.getPassword();
 		String password = new String(passwordChars);
 
 		KorisnikDTO kor = loginDAL.CheckUser(email, password);
-		if (kor == null || email=="" || password=="")
+		if (kor == null || email=="" || password=="" || kor.korisnikId == 0)
 		{
 			JOptionPane.showMessageDialog(null, "Neispravan email ili lozinka.");
 			return;

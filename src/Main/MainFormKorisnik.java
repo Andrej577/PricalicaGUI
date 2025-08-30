@@ -1,4 +1,4 @@
-package Forme;
+package Main;
 
 import java.awt.BorderLayout;
 
@@ -7,7 +7,6 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import DTO.KorisnikDTO;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -79,6 +78,12 @@ public class MainFormKorisnik extends JDialog {
 		}
 		{
 			JButton btnNewButton_2 = new JButton("Pregled transakcija");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					TransakcijeForm form = new TransakcijeForm(kor.korisnikId);
+					form.setVisible(true);
+				}
+			});
 			btnNewButton_2.setBounds(20, 190, 169, 30);
 			contentPanel.add(btnNewButton_2);
 		}
@@ -86,9 +91,6 @@ public class MainFormKorisnik extends JDialog {
 			JButton btnNewButton_3 = new JButton("Moj profil");
 			btnNewButton_3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					DAL.Korisnik korisnikDAL = new DAL.Korisnik();
-					KorisnikDTO kor = korisnikDAL.GetKorisnik();
-					
 					KorisnikForm korisnikForma = new KorisnikForm(kor);
 					korisnikForma.setVisible(true);
 				}

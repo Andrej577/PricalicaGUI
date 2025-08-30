@@ -1,4 +1,4 @@
-package Forme;
+package Main;
 
 import java.awt.EventQueue;
 import java.sql.Connection;

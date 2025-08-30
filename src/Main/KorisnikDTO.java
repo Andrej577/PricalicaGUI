@@ -1,4 +1,4 @@
-package DTO;
+package Main;
 
 public class KorisnikDTO 
 {

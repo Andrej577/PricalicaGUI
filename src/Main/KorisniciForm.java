@@ -1,4 +1,4 @@
-package Forme;
+package Main;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -15,8 +15,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
-import DTO.KorisnikDTO;
 
 import javax.swing.JLabel;
 import java.awt.Font;
