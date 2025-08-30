@@ -7,7 +7,8 @@ import java.time.LocalDateTime;
 public class TransakcijeDTO {
 	public int transakcija_id;
 	public int korisnik_id;
+	public String korisnik_ime;
     public BigDecimal iznos;
     public Date datumTransakcije;
-	public int status_id;
+	public String status_id;
 }

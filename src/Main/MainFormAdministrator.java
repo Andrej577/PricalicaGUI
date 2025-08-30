@@ -55,7 +55,7 @@ public class MainFormAdministrator {
 		frmAdministrator.getContentPane().add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(20, 54, 253, 236);
+		panel.setBounds(20, 54, 254, 186);
 		frmAdministrator.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -117,6 +117,25 @@ public class MainFormAdministrator {
 		});
 		btnNewButton_2.setBounds(454, 345, 115, 30);
 		frmAdministrator.getContentPane().add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("Pregled svih transakcija");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TransakcijeSveForm TransakcijeLista = new TransakcijeSveForm();
+				TransakcijeLista.setVisible(true);
+			}
+		});
+		btnNewButton_3.setBounds(30, 287, 198, 39);
+		frmAdministrator.getContentPane().add(btnNewButton_3);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(20, 252, 254, 92);
+		frmAdministrator.getContentPane().add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblNewLabel_3 = new JLabel("Transakcije");
+		lblNewLabel_3.setBounds(10, 10, 117, 22);
+		panel_2.add(lblNewLabel_3);
 		btnKnjige.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				KnjigaForm knjigaForma = new KnjigaForm();

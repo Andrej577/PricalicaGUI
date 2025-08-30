@@ -84,7 +84,7 @@ public class TransakcijeForm extends JDialog {
             for (TransakcijeDTO dto : lista) {
                 model.addRow(new Object[] {
                     dto.transakcija_id,
-                    dto.korisnik_id,
+                    dto.korisnik_ime,
                     dto.iznos,
                     dto.datumTransakcije,
                     dto.status_id

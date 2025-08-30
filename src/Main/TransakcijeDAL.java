@@ -29,15 +29,65 @@ public class TransakcijeDAL {
                 while (rs.next()) {
                     TransakcijeDTO dto = new TransakcijeDTO();
                     dto.transakcija_id = rs.getInt("transakcija_id");
-                    dto.korisnik_id = rs.getInt("korisnik_id");
+                    dto.korisnik_ime = rs.getString("ime");
                     dto.iznos = rs.getBigDecimal("iznos");
                     dto.datumTransakcije = rs.getDate("datum_transakcije");
-                    dto.status_id = rs.getInt("status_id");
+                    if (rs.getInt("status_id") == 2)
+                    {
+                    	dto.status_id = "Platio";
+                    }
+                    else if (rs.getInt("status_id") == 2)
+                    {
+                    	dto.status_id = "Nije platio";
+                    };
+                 
                     transakcije.add(dto);
                 }
             }
         }
 
         return transakcije;
+    }
+    
+    public List <TransakcijeDTO> getTransakcijeAll () throws SQLException{
+    	String query = "SELECT \n"
+    			+ "	t.transakcija_id,\n"
+    			+ "	t.korisnik_id,\n"
+    			+ "	kor.ime as ime,\n"
+    			+ "	t.iznos,\n"
+    			+ "	t.datum_transakcije,\n"
+    			+ "	t.status_id \n"
+    			+ "FROM transakcije t\n"
+    			+ "JOIN korisnici kor ON t.korisnik_id = kor.korisnik_id ";
+    	
+    	List<TransakcijeDTO> transakcije = new ArrayList<>();
+    	
+    	try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+
+               
+               try (ResultSet rs = stmt.executeQuery()) {
+                   while (rs.next()) {
+                       TransakcijeDTO dto = new TransakcijeDTO();
+                       dto.transakcija_id = rs.getInt("transakcija_id");
+                       dto.korisnik_id = rs.getInt("korisnik_id");
+                       dto.korisnik_ime = rs.getString("ime");
+                       dto.iznos = rs.getBigDecimal("iznos");
+                       dto.datumTransakcije = rs.getDate("datum_transakcije");
+                       if (rs.getInt("status_id") == 2)
+                       {
+                       		dto.status_id = "Platio";
+                       }
+                       else if (rs.getInt("status_id") == 1)
+                       {
+                       		dto.status_id = "Nije platio";
+                       };
+                    
+                       transakcije.add(dto);
+                   }
+               }
+           }
+
+           return transakcije;    
     }
 }
